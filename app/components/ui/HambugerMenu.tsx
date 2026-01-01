@@ -53,6 +53,10 @@ export interface HamburgerMenuOverlayProps {
     onOpen?: () => void;
     /** Callback when menu closes */
     onClose?: () => void;
+    /** External control of open state */
+    externalOpen?: boolean;
+    /** Callback to toggle menu from external button */
+    onToggle?: () => void;
     /** Menu items layout direction */
     menuDirection?: "vertical" | "horizontal";
     /** Enable blur backdrop */
@@ -86,8 +90,11 @@ export const HamburgerMenuOverlay: React.FC<HamburgerMenuOverlayProps> = ({
     menuDirection = "vertical",
     enableBlur = false,
     zIndex = 1000,
+    externalOpen,
+    onToggle,
 }) => {
-    const [isOpen, setIsOpen] = useState(false);
+    const [internalOpen, setInternalOpen] = useState(false);
+    const isOpen = externalOpen !== undefined ? externalOpen : internalOpen;
     const navRef = useRef<HTMLDivElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
 
@@ -106,13 +113,17 @@ export const HamburgerMenuOverlay: React.FC<HamburgerMenuOverlayProps> = ({
     };
 
     const toggleMenu = () => {
-        const newState = !isOpen;
-        setIsOpen(newState);
-
-        if (newState) {
-            onOpen?.();
+        if (onToggle) {
+            onToggle();
         } else {
-            onClose?.();
+            const newState = !internalOpen;
+            setInternalOpen(newState);
+
+            if (newState) {
+                onOpen?.();
+            } else {
+                onClose?.();
+            }
         }
     };
 
@@ -126,7 +137,11 @@ export const HamburgerMenuOverlay: React.FC<HamburgerMenuOverlayProps> = ({
         }
 
         if (!keepOpenOnItemClick) {
-            setIsOpen(false);
+            if (onToggle) {
+                onToggle();
+            } else {
+                setInternalOpen(false);
+            }
             onClose?.();
         }
     };
@@ -135,14 +150,18 @@ export const HamburgerMenuOverlay: React.FC<HamburgerMenuOverlayProps> = ({
     useEffect(() => {
         const handleEscape = (e: KeyboardEvent) => {
             if (e.key === "Escape" && isOpen) {
-                setIsOpen(false);
+                if (onToggle) {
+                    onToggle();
+                } else {
+                    setInternalOpen(false);
+                }
                 onClose?.();
             }
         };
 
         document.addEventListener("keydown", handleEscape);
         return () => document.removeEventListener("keydown", handleEscape);
-    }, [isOpen, onClose]);
+    }, [isOpen, onClose, onToggle]);
 
     return (
         <div ref={containerRef} className={cn("absolute w-full h-full", className)}>
