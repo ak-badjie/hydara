@@ -55,12 +55,12 @@ export default function AdminDashboard() {
             {/* Header */}
             <div className="mb-8">
                 <h1
-                    className="text-3xl font-bold text-white mb-2"
-                    style={{ fontFamily: "var(--font-outfit)" }}
+                    className="text-3xl font-bold mb-2"
+                    style={{ fontFamily: "var(--font-outfit)", color: "#0d5c3f" }}
                 >
                     Dashboard
                 </h1>
-                <p style={{ color: "rgba(255,255,255,0.5)" }}>
+                <p style={{ color: "#666" }}>
                     Manage your Hydara Trading content and products
                 </p>
             </div>
@@ -71,26 +71,26 @@ export default function AdminDashboard() {
                     <Link
                         key={stat.name}
                         href={stat.href}
-                        className="group p-6 rounded-2xl transition-all duration-300 hover:scale-[1.02]"
+                        className="group p-6 rounded-2xl transition-all duration-300 hover:scale-[1.02] hover:shadow-lg"
                         style={{
-                            background: "rgba(255,255,255,0.03)",
-                            border: "1px solid rgba(255,255,255,0.06)"
+                            background: "white",
+                            border: "1px solid #e8e6e1"
                         }}
                     >
                         <div className="flex items-start justify-between mb-4">
                             <div
                                 className="w-12 h-12 rounded-xl flex items-center justify-center"
-                                style={{ background: `${stat.color}20` }}
+                                style={{ background: `${stat.color}15` }}
                             >
                                 <stat.icon size={24} style={{ color: stat.color }} />
                             </div>
-                            <TrendingUp size={18} style={{ color: "rgba(255,255,255,0.3)" }} />
+                            <TrendingUp size={18} style={{ color: "#ccc" }} />
                         </div>
                         <div>
-                            <p className="text-sm mb-1" style={{ color: "rgba(255,255,255,0.5)" }}>
+                            <p className="text-sm mb-1" style={{ color: "#888" }}>
                                 {stat.name}
                             </p>
-                            <p className="text-3xl font-bold text-white">
+                            <p className="text-3xl font-bold" style={{ color: "#333" }}>
                                 {isLoading ? "—" : stat.count}
                             </p>
                         </div>
@@ -102,17 +102,17 @@ export default function AdminDashboard() {
             <div
                 className="p-6 rounded-2xl mb-8"
                 style={{
-                    background: "rgba(255,255,255,0.03)",
-                    border: "1px solid rgba(255,255,255,0.06)"
+                    background: "white",
+                    border: "1px solid #e8e6e1"
                 }}
             >
-                <h2 className="text-lg font-semibold text-white mb-4" style={{ fontFamily: "var(--font-outfit)" }}>
+                <h2 className="text-lg font-semibold mb-4" style={{ fontFamily: "var(--font-outfit)", color: "#333" }}>
                     Quick Actions
                 </h2>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                     <Link
                         href="/admin/shop"
-                        className="flex items-center gap-3 px-4 py-3 rounded-xl transition-colors"
+                        className="flex items-center gap-3 px-4 py-3 rounded-xl transition-colors hover:opacity-80"
                         style={{ background: "rgba(59, 130, 246, 0.1)" }}
                     >
                         <Package size={18} style={{ color: "#3b82f6" }} />
@@ -122,7 +122,7 @@ export default function AdminDashboard() {
                     </Link>
                     <Link
                         href="/admin/travel"
-                        className="flex items-center gap-3 px-4 py-3 rounded-xl transition-colors"
+                        className="flex items-center gap-3 px-4 py-3 rounded-xl transition-colors hover:opacity-80"
                         style={{ background: "rgba(245, 158, 11, 0.1)" }}
                     >
                         <Plane size={18} style={{ color: "#f59e0b" }} />
@@ -132,7 +132,7 @@ export default function AdminDashboard() {
                     </Link>
                     <Link
                         href="/admin/materials"
-                        className="flex items-center gap-3 px-4 py-3 rounded-xl transition-colors"
+                        className="flex items-center gap-3 px-4 py-3 rounded-xl transition-colors hover:opacity-80"
                         style={{ background: "rgba(236, 72, 153, 0.1)" }}
                     >
                         <Hammer size={18} style={{ color: "#ec4899" }} />
@@ -142,7 +142,7 @@ export default function AdminDashboard() {
                     </Link>
                     <Link
                         href="/admin/plaza"
-                        className="flex items-center gap-3 px-4 py-3 rounded-xl transition-colors"
+                        className="flex items-center gap-3 px-4 py-3 rounded-xl transition-colors hover:opacity-80"
                         style={{ background: "rgba(139, 92, 246, 0.1)" }}
                     >
                         <Building2 size={18} style={{ color: "#8b5cf6" }} />
@@ -157,19 +157,19 @@ export default function AdminDashboard() {
             <div
                 className="p-6 rounded-2xl flex items-start gap-4"
                 style={{
-                    background: "rgba(13, 92, 63, 0.15)",
-                    border: "1px solid rgba(13, 92, 63, 0.3)"
+                    background: "rgba(13, 92, 63, 0.08)",
+                    border: "1px solid rgba(13, 92, 63, 0.2)"
                 }}
             >
                 <div
                     className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                    style={{ background: "rgba(13, 92, 63, 0.3)" }}
+                    style={{ background: "rgba(13, 92, 63, 0.15)" }}
                 >
-                    <AlertCircle size={20} style={{ color: "#4ade80" }} />
+                    <AlertCircle size={20} style={{ color: "#0d5c3f" }} />
                 </div>
                 <div>
-                    <h3 className="font-medium text-white mb-1">Getting Started</h3>
-                    <p className="text-sm" style={{ color: "rgba(255,255,255,0.6)" }}>
+                    <h3 className="font-medium mb-1" style={{ color: "#0d5c3f" }}>Getting Started</h3>
+                    <p className="text-sm" style={{ color: "#555" }}>
                         Use the sidebar to navigate between sections. You can add, edit, and delete
                         products from each section. Images are automatically uploaded to Firebase Storage.
                     </p>

@@ -5,13 +5,13 @@ import { getFirestore, Firestore } from "firebase/firestore";
 import { getStorage, FirebaseStorage } from "firebase/storage";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDICqj7kkDh92xEM5QW3P0gqPd6G6TtASY",
-    authDomain: "hydara.firebaseapp.com",
-    projectId: "hydara",
-    storageBucket: "hydara.firebasestorage.app",
-    messagingSenderId: "106638362146",
-    appId: "1:106638362146:web:ad71595d916b7f796eec7b",
-    measurementId: "G-1G7WL5RYV8"
+    apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+    authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+    measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
 };
 
 // Initialize Firebase (prevent multiple initializations)

@@ -43,8 +43,21 @@ export default function LoginPage() {
     };
 
     return (
-        <div className="min-h-screen flex">
-            {/* Left Side - Branding & Pattern Image */}
+        <div
+            className="min-h-screen flex relative"
+            style={{
+                backgroundImage: "url('/pattern.avif')",
+                backgroundSize: "cover",
+                backgroundPosition: "center"
+            }}
+        >
+            {/* Background overlay for mobile */}
+            <div
+                className="absolute inset-0 lg:hidden"
+                style={{ background: "rgba(255,255,255,0.85)" }}
+            />
+
+            {/* Left Side - Branding & Pattern Image (Desktop Only) */}
             <div
                 className="hidden lg:flex lg:w-1/2 relative overflow-hidden"
                 style={{
@@ -132,10 +145,15 @@ export default function LoginPage() {
 
             {/* Right Side - Login Form */}
             <div
-                className="w-full lg:w-1/2 flex items-center justify-center p-8"
-                style={{ background: "#fafafa" }}
+                className="relative z-10 w-full lg:w-1/2 flex items-center justify-center p-6 sm:p-8"
+                style={{ background: "transparent" }}
             >
-                <div className="w-full max-w-md">
+                <div
+                    className="hidden lg:block absolute inset-0"
+                    style={{ background: "#fafafa" }}
+                />
+
+                <div className="relative z-10 w-full max-w-md">
                     {/* Mobile Logo */}
                     <div className="lg:hidden text-center mb-8">
                         <Link href="/" className="inline-block">
@@ -146,11 +164,12 @@ export default function LoginPage() {
                                 HYDARA TRADING
                             </h1>
                         </Link>
+                        <p className="mt-1 text-sm" style={{ color: "#555" }}>Enterprise Management System</p>
                     </div>
 
                     {/* Login Card */}
                     <div
-                        className="rounded-3xl p-8 shadow-xl"
+                        className="rounded-3xl p-6 sm:p-8 shadow-xl"
                         style={{
                             background: "white",
                             border: "1px solid #e8e6e1"

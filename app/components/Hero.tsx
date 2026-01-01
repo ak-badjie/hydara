@@ -17,17 +17,20 @@ export default function Hero() {
             <div className="section-container relative z-10">
                 <div className="flex flex-col justify-center min-h-[calc(100vh-200px)] py-12">
 
-                    {/* Content */}
-                    <div className="flex flex-col gap-8 max-w-2xl animate-fade-in-left" style={{ animationDuration: "1s" }}>
+                    {/* Content - repositioned for mobile */}
+                    <div
+                        className="flex flex-col gap-6 md:gap-8 max-w-2xl animate-fade-in-left mt-auto md:mt-0 pb-24 md:pb-0"
+                        style={{ animationDuration: "1s" }}
+                    >
                         {/* Badge */}
-                        <div className="flex items-center gap-3">
-                            <span className="badge badge-gold">Authorized Samsung Distributor</span>
-                            <span className="badge badge-navy">Est. Gambia</span>
+                        <div className="flex flex-wrap items-center gap-2 md:gap-3">
+                            <span className="badge badge-gold text-xs md:text-sm">Authorized Samsung Distributor</span>
+                            <span className="badge badge-navy text-xs md:text-sm">Est. Gambia</span>
                         </div>
 
-                        {/* Headline */}
+                        {/* Headline - Responsive sizing */}
                         <h1
-                            className="heading-hero"
+                            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight"
                             style={{ fontFamily: "var(--font-outfit), sans-serif" }}
                         >
                             <span style={{ color: "#0d5c3f" }}>Experience</span>
@@ -39,7 +42,7 @@ export default function Hero() {
 
                         {/* Subtext */}
                         <p
-                            className="text-body-large max-w-lg font-bold p-4 rounded-xl"
+                            className="text-sm sm:text-base md:text-lg max-w-lg font-bold p-3 md:p-4 rounded-xl"
                             style={{
                                 color: "white",
                                 background: "rgba(255,255,255,0.15)",
@@ -47,23 +50,23 @@ export default function Hero() {
                             }}
                         >
                             From cutting-edge Samsung electronics to premium foam products,
-                            world-class travel services, and The Gambia's premier commercial plaza.
+                            world-class travel services, and The Gambia&apos;s premier commercial plaza.
                             We bring excellence to every aspect of your life.
                         </p>
 
                         {/* CTA Buttons */}
-                        <div className="flex flex-wrap gap-4">
-                            <a href="#electronics" className="btn-primary">
+                        <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
+                            <a href="#electronics" className="btn-primary text-center justify-center">
                                 Explore Electronics
                                 <ArrowRight size={18} />
                             </a>
-                            <a href="#products" className="btn-secondary">
+                            <a href="#products" className="btn-secondary text-center justify-center">
                                 View All Products
                             </a>
                         </div>
 
-                        {/* Quick Stats */}
-                        <div className="flex flex-wrap gap-8 pt-4">
+                        {/* Quick Stats - Hidden on mobile, shown on larger screens */}
+                        <div className="hidden sm:flex flex-wrap gap-8 pt-4">
                             <div>
                                 <div className="text-3xl font-semibold" style={{ color: "#0d5c3f", fontFamily: "var(--font-outfit)" }}>20+</div>
                                 <div className="text-sm" style={{ color: "#555" }}>Years of Excellence</div>
@@ -81,7 +84,7 @@ export default function Hero() {
                 </div>
 
                 {/* Electronics Quick Category Bar */}
-                <div className="pb-12">
+                <div className="pb-12 hidden md:block">
                     <div
                         className="card-glass flex flex-wrap justify-center gap-6 lg:gap-12 py-6 px-8 max-w-4xl mx-auto"
                         style={{ borderRadius: "100px" }}
