@@ -8,6 +8,7 @@ import { HamburgerMenuOverlay, MenuItem } from "./ui/HambugerMenu";
 import { useRouter } from "next/navigation";
 
 const navLinks = [
+    { name: "Home", href: "/" },
     { name: "Shop", href: "/electronics" },
     { name: "Foam", href: "/foam" },
     { name: "Travel", href: "/travel" },
@@ -149,15 +150,26 @@ export default function Navigation() {
                 </nav>
             </header>
 
-            {/* HamburgerMenuOverlay - Only render when menu is open or transitioning */}
+            {/* HamburgerMenuOverlay - Stays visible for animation */}
             <div
                 className="lg:hidden fixed inset-0"
                 style={{
-                    zIndex: menuOpen ? 100 : -1,
-                    pointerEvents: menuOpen ? "auto" : "none",
-                    visibility: menuOpen ? "visible" : "hidden"
+                    zIndex: 100,
+                    pointerEvents: menuOpen ? "auto" : "none"
                 }}
             >
+                {/* Close Button on Top Right of Overlay - Only visible when open */}
+                {menuOpen && (
+                    <button
+                        onClick={handleMenuToggle}
+                        className="fixed top-4 right-4 z-[200] w-12 h-12 flex items-center justify-center rounded-full transition-all hover:bg-black/5"
+                        style={{ background: "transparent" }}
+                        aria-label="Close menu"
+                    >
+                        <X size={24} style={{ color: "#0d5c3f" }} />
+                    </button>
+                )}
+
                 <HamburgerMenuOverlay
                     items={menuItems}
                     buttonTop="32px"
